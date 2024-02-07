@@ -17,7 +17,7 @@ class Airline(models.Model):
     airline_code = models.CharField(max_length=5)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
     
 class Runway(models.Model):
     runway_number = models.IntegerField
@@ -33,7 +33,7 @@ class Runway(models.Model):
     airport = models.ForeignKey(Airport, on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.runway_number+self.runway_designation
+        return str(self.runway_number+self.runway_designation)
     
 class Flight(models.Model):
     origin = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='flight_origin')
@@ -42,10 +42,10 @@ class Flight(models.Model):
     flight_number = models.IntegerField
     departure = models.DateTimeField
     arrival = models.DateTimeField
-    aircraft_type = models.CharField(max_lenth=10)
+    aircraft_type = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.airline+self.flight_number
+        return str(self.airline.airline_code + self.flight_number)
 
 
     
