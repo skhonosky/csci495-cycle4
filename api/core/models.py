@@ -33,7 +33,19 @@ class Runway(models.Model):
     airport = models.ForeignKey(Airport, on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.runway_number and self.runway_designation
+        return self.runway_number+self.runway_designation
+    
+class Flight(models.Model):
+    origin = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='flight_origin')
+    destination = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='flight_destination')
+    airline = models.ForeignKey(Airline, on_delete=models.CASCADE)
+    flight_number = models.IntegerField
+    departure = models.DateTimeField
+    arrival = models.DateTimeField
+    aircraft_type = models.CharField(max_lenth=10)
+
+    def __str__(self):
+        return self.airline+self.flight_number
 
 
     
