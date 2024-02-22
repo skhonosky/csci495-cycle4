@@ -8,9 +8,9 @@ from .views import RunwayViewSet
 router = DefaultRouter()
 router.register(r'airports/', AirportViewSet)
 router.register(r'airlines/', AirlineViewSet)
-router.register(r'flgihts/', FlightViewSet)
+router.register(r'flights/', FlightViewSet)
 router.register(r'runways/', RunwayViewSet)
 
 urlpatterns = [
-    path(' ', include(router.urls)),
+    path('', include(router.urls)),
 ]
