@@ -4,7 +4,7 @@ from core.models import Airline, Airport, Runway, Flight
 class AirlineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Airline
-        fields = ['airport', 'runway_number', 'length', 'width']
+        fields = ['name', 'airline_code']
         read_only_fields = ['id']
 
 class RunwaySerializer(serializers.ModelSerializer):
@@ -26,5 +26,5 @@ class AirportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Airport
-        fields = ['name', 'airport_code', 'address', 'city', 'state', 'zip_code', 'runways', 'flight_origin', 'flight_destination']
+        fields = ['name', 'airport_code']
         read_only_fields = ['id']
